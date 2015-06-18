@@ -5,7 +5,7 @@ let React = require('react'),
 var Comments = React.createClass({
   render: function() {
     var comments = m.intoArray(this.props.comments).map((comment)=>{
-      return (<Comment key={m.get(comment,'key')} index={m.get(comment,'index')} dValue={m.get(comment,'value')} changeComment={this.props.changeComment} deleteComment={this.props.deleteComment}></Comment>);
+      return (<Comment index={m.get(comment,'index')} dValue={m.get(comment,'value')} changeComment={this.props.changeComment} deleteComment={this.props.deleteComment}></Comment>);
     });
 
     return (

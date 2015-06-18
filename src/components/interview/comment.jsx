@@ -8,14 +8,16 @@ var Comment = React.createClass({
   },
 
   _handleChange: function(e){
-    this.props.changeComment(this.props.index, e.target.value);
+    if (e.keyCode == 13){
+      this.props.changeComment(this.props.index, e.target.value);
+    }
   },
 
   render: function() {
     return (
       <div className="row collapse">
         <div className="small-11 columns">
-          <input type="text" defaultValue={this.props.dValue} onChange={this._handleChange}></input>
+          <input className='edit-input' type="text" defaultValue={this.props.dValue} onKeyDown={this._handleChange}></input>
         </div>
         <div className="small-1 columns">
           <span className="icon-delete-mid" onClick={this._handleDelete}></span>

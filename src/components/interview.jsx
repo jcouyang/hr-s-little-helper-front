@@ -2,7 +2,8 @@ var React = require('react'),
     store = require('../store'),
     Form = require('./form'),
     Field = require('./field'),
-    Chooser = require('./chooser');
+    Chooser = require('./chooser'),
+    Comments = require('./interview/comments');
 
 var Interview = React.createClass({
   getInitialState: function() {

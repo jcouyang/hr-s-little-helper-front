@@ -1,12 +1,11 @@
 let React = require('react'),
     m = require('mori'),
-    Field = require('../Field'),
     Comment = require('./comment');
 
 var Comments = React.createClass({
   render: function() {
     var comments = m.intoArray(this.props.comments).map((comment)=>{
-      return (<Comment index={m.get(comment,'key')} deleteComment={this.props.deleteComment}></Comment>);
+      return (<Comment key={m.get(comment,'key')} index={m.get(comment,'index')} dValue={m.get(comment,'value')} changeComment={this.props.changeComment} deleteComment={this.props.deleteComment}></Comment>);
     });
 
     return (

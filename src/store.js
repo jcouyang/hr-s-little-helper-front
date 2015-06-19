@@ -49,4 +49,5 @@ store.editInterview = function(id, entity) {
   return authclient({method:'PUT', path: 'interview/'+id, entity: entity});
 }
 
+
 module.exports = store;

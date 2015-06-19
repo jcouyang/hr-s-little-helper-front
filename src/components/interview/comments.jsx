@@ -4,12 +4,23 @@ let React = require('react'),
 
 var Comments = React.createClass({
 
+  _refreshData: function(){
+    var commentDatas = m.intoArray(
+                           m.remove((value)=>value=='',
+                                    m.map((comment)=>m.get(comment,'value'),
+                                           this.state.comments
+                                         )
+                                    )
+    );
+    this.props.cb(this.props.index, commentDatas);
+  },
+
   _deleteComment: function(index){
     this.setState({
       comments: m.filter((comment)=>m.get(comment,'index')!=index,
                          this.state.comments
                         )
-    });
+    },this._refreshData);
   },
 
   _changeComment: function(index,value){
@@ -17,7 +28,7 @@ var Comments = React.createClass({
     changedComment = m.assoc(changedComment, 'value', value);
     this.setState({
       comments: m.assoc(this.state.comments, index, changedComment)
-    });
+    },this._refreshData);
   },
 
   _arrayToMori: function(commentValues){
@@ -32,7 +43,7 @@ var Comments = React.createClass({
     commentValues.push('')
     this.setState({
       comments: this._arrayToMori(commentValues)
-    });
+    },this._refreshData);
   },
 
   getInitialState: function() {
@@ -44,7 +55,7 @@ var Comments = React.createClass({
           return (<Comment key={m.get(comment,'key')} index={m.get(comment,'index')} dValue={m.get(comment,'value')} changeComment={this._changeComment} deleteComment={this._deleteComment}></Comment>);
         });
     return (
-      <div className='row collapse comments'>
+      <div className='collapse comments'>
         <label>{this.props.title}<span className='icon-plus small-offset-1' onClick={this._addComment}></span></label>
         {comments}
       </div>

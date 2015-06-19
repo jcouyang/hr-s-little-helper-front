@@ -3,7 +3,7 @@ var React = require('react'),
     Form = require('./form'),
     Field = require('./field'),
     Chooser = require('./chooser'),
-    Comments = require('./interview/comments');
+    CommentsList = require('./interview/comments-list');
 
 var Interview = React.createClass({
   getInitialState: function() {
@@ -37,6 +37,12 @@ var Interview = React.createClass({
       status: resp.status.code
     })
   },
+  _cbChangeInterviewer: function(){
+    this.setState({selectedInterviewers: this.refs.chooser.interviewers})
+  },
+  _cbChangeComment: function(key, comments){
+    this.commentsList[key] = comments;
+  },
   render: function() {
     return (
       <Form onSubmit={this._handleSubmit} method="post" title="Create Interview" status={this.state.status}>
@@ -44,7 +50,9 @@ var Interview = React.createClass({
         <Field lname='Interviewee Name' ref="name" dValue={this.data().name}></Field>
         <Field type="date" lname='Date' ref="date" dValue={this.data().date}></Field>
         <Chooser ref="chooser" dValue={this.data().interviewers}/>
+        <CommentsList interviewers={this.state.selectedInterviewers} cb={this._cbChangeComment}></CommentsList>
         <input type='submit' id='submit' className="button" value="Create"/>
+
       </Form>
     )
   },

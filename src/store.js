@@ -1,10 +1,11 @@
-var client = require('./client'),
-    when = require('when');
-
+var client = require('./client');
 var store={};
 
 var authclient = function(opt) {
+  var loading = document.getElementById('loading')
+  loading.style.display='block'
   return client(opt).then(function(resp) {
+    loading.style.display='none'
     if(resp.status.code===401) location.href='/login/'
     return resp
   })

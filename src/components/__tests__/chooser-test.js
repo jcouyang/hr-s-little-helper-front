@@ -7,7 +7,7 @@ describe('Chooser', function() {
   it('can get value when option changes', function() {
     TestUtils.mockComponent(Selector)
     var chooser = TestUtils.renderIntoDocument(
-      <Chooser/>
+      <Chooser cb={function(){}}/>
     );
     chooser._handleSelect({target:
                            {selectedOptions:

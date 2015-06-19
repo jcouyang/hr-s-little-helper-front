@@ -8,7 +8,8 @@ var React = require('react'),
 var Interview = React.createClass({
   getInitialState: function() {
     return {
-      status:-1
+      status:-1,
+      selectedInterviewers: []
     }
   },
   data: function() {
@@ -25,7 +26,8 @@ var Interview = React.createClass({
       'description':this.refs.description.value,
       'interviewers': this.refs.chooser.value,
       'date':this.refs.date.value,
-      'name':this.refs.name.value
+      'name':this.refs.name.value,
+      'comments': this.refs.comments.value
     }
     var resp
     if(this.props.data){
@@ -49,10 +51,9 @@ var Interview = React.createClass({
         <Field lname='Description' ref="description" dValue={this.data().description}></Field>
         <Field lname='Interviewee Name' ref="name" dValue={this.data().name}></Field>
         <Field type="date" lname='Date' ref="date" dValue={this.data().date}></Field>
-        <Chooser ref="chooser" dValue={this.data().interviewers}/>
-        <CommentsList interviewers={this.state.selectedInterviewers} cb={this._cbChangeComment}></CommentsList>
+        <Chooser ref="chooser" dValue={this.data().interviewers} cb={this._cbChangeInterviewer}/>
+        <CommentsList ref='comments' interviewers={this.state.selectedInterviewers}></CommentsList>
         <input type='submit' id='submit' className="button" value="Create"/>
-
       </Form>
     )
   },

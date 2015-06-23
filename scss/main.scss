@@ -40,3 +40,23 @@
   content: "\e600";
 }
 
+.icon-delete-mid::after{
+  content: "\e600";
+  line-height: 37px;
+  font-size: 22px;
+}
+
+.icon-plus:after {
+  content: "\ea0a";
+}
+
+.comments{
+  background-color: antiquewhite;
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
+
+input.edit-input:focus{
+  background-color: yellow;
+}
+

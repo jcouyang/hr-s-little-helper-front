@@ -29,7 +29,7 @@ var Interview = React.createClass({
       'interviewers': this.refs.chooser.value,
       'date':this.refs.date.value,
       'name':this.refs.name.value,
-      'comments': m.toJs(this.refs.comments.value)
+      'comments':this.refs.comments.value
     }
     var resp
     if(this.props.data){
@@ -44,8 +44,8 @@ var Interview = React.createClass({
   _arrayToHash: function(interviewers){
     var commentsList ={};
     m.each(interviewers, (interviewer)=>{
-                                         if (m.get(interviewer,'key') in this.state.selectedInterviewers){
-                                           commentsList[m.get(interviewer,'key')] = this.state.selectedInterviewers[m.get(interviewer,'key')];
+                                         if (m.get(interviewer,'key') in this.refs.comments.value){
+                                           commentsList[m.get(interviewer,'key')]= {name: m.get(interviewer,'name'), comments:this.refs.comments.value[m.get(interviewer,'key')]};
                                          }
                                          else{
                                            commentsList[m.get(interviewer,'key')]= {name: m.get(interviewer,'name'), comments:['']};
@@ -64,13 +64,13 @@ var Interview = React.createClass({
   },
   render: function() {
     return (
-      <Form onSubmit={this._handleSubmit} method="post" title="Create Interview" status={this.state.status}>
+      <Form onSubmit={this._handleSubmit} method="post" title={this.props.data ? "Update Interview" : "Create Interview"} status={this.state.status}>
         <Field lname='Description' ref="description" dValue={this.data().description}></Field>
         <Field lname='Interviewee Name' ref="name" dValue={this.data().name}></Field>
         <Field type="date" lname='Date' ref="date" dValue={this.data().date}></Field>
         <Chooser ref="chooser" dValue={this.data().interviewers} cb={this._cbChangeInterviewer}/>
         <CommentsList ref='comments' interviewers={this.state.selectedInterviewers}></CommentsList>
-        <input type='submit' id='submit' className="button" value="Create"/>
+        <input type='submit' id='submit' className="button" value="Save"/>
       </Form>
     )
   },

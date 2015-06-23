@@ -1,4 +1,5 @@
 var React = require('react'),
+    m = require('mori'),
     store = require('../store'),
     Form = require('./form'),
     Field = require('./field'),
@@ -7,17 +8,18 @@ var React = require('react'),
 
 var Interview = React.createClass({
   getInitialState: function() {
-    return {
+    return ({
       status:-1,
-      selectedInterviewers: []
-    }
+      selectedInterviewers: this.data().comments
+    })
   },
   data: function() {
     return this.props.data||{
         name:"",
         description: "",
         date: "",
-        interviewers: []
+        interviewers: [],
+        comments: {},
       }
   },
   _handleSubmit: async function(e){
@@ -27,7 +29,7 @@ var Interview = React.createClass({
       'interviewers': this.refs.chooser.value,
       'date':this.refs.date.value,
       'name':this.refs.name.value,
-      'comments': this.refs.comments.value
+      'comments': m.toJs(this.refs.comments.value)
     }
     var resp
     if(this.props.data){
@@ -39,8 +41,23 @@ var Interview = React.createClass({
       status: resp.status.code
     })
   },
+  _arrayToHash: function(interviewers){
+    var commentsList ={};
+    m.each(interviewers, (interviewer)=>{
+                                         if (m.get(interviewer,'key') in this.state.selectedInterviewers){
+                                           commentsList[m.get(interviewer,'key')] = this.state.selectedInterviewers[m.get(interviewer,'key')];
+                                         }
+                                         else{
+                                           commentsList[m.get(interviewer,'key')]= {name: m.get(interviewer,'name'), comments:['']};
+                                         }
+
+                                         });
+    return commentsList;
+
+  },
+
   _cbChangeInterviewer: function(){
-    this.setState({selectedInterviewers: this.refs.chooser.interviewers})
+    this.setState({selectedInterviewers: this._arrayToHash(this.refs.chooser.interviewers)})
   },
   _cbChangeComment: function(key, comments){
     this.commentsList[key] = comments;

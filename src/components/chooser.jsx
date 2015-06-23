@@ -27,7 +27,7 @@ let Chooser = React.createClass({
         )
       },function() {
         this.value = m.intoArray(m.map(s=>m.get(s,'key'), this.state.selected));
-        this.interviewers = m.intoArray(this.state.selected);
+        this.interviewers = this.state.selected;
         this.props.cb();
       });
     }
@@ -39,8 +39,8 @@ let Chooser = React.createClass({
         selected: m.filter(interviewer=>m.get(interviewer, 'key')!=data.key, this.state.selected)
       },function() {
         this.value = m.intoArray(m.map(s=>m.get(s,'key'), this.state.selected));
-        this.interviewers = m.intoArray(this.state.selected);
-        this.props.callBack();
+        this.interviewers = this.state.selected;
+        this.props.cb();
       });
     }
   },

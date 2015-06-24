@@ -13,11 +13,22 @@ var Interview = React.createClass({
       selectedInterviewers: this.data().comments
     })
   },
+
+  _currentDate: function(){
+      var current = new Date();
+      var m = current.getMonth()+1;
+      m = m>10 ? m : `0${m}`
+      var d = current.getDate();
+      d = d>10 ? d : `0${d}`
+      return `${current.getFullYear()}-${m}-${d}`;
+    },
+
   data: function() {
+
     return this.props.data||{
         name:"",
         description: "",
-        date: "",
+        date: this._currentDate(),
         interviewers: [],
         comments: {},
       }

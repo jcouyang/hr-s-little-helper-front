@@ -13,8 +13,8 @@ let Selector = React.createClass({
   },
   render: function() {
     var options = this.state.options.map(option=>(
-      <option value={option.key} data-key={option.key} data-email={option.email} data-name={option.name}>{option.name}</option>))
-    options = [<option value='defaultText'>{this.props.defaultText}</option>].concat(options);
+      <option value={option.key} key={option.key} data-key={option.key} data-email={option.email} data-name={option.name}>{option.name}</option>))
+    options = [<option value='defaultText' key=''>{this.props.defaultText}</option>].concat(options);
     return (
       <label>{this.props.name}
         <select onChange={this.props.onChange}>

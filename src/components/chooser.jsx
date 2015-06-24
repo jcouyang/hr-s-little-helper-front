@@ -34,7 +34,7 @@ let Chooser = React.createClass({
   },
   _handleDelete: function(e) {
     let data = e.target.dataset;
-    if (data.key) {
+    if (data.key && data.key != '') {
       this.setState({
         selected: m.filter(interviewer=>m.get(interviewer, 'key')!=data.key, this.state.selected)
       },function() {

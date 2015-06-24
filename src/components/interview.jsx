@@ -48,7 +48,7 @@ var Interview = React.createClass({
                                            commentsList[m.get(interviewer,'key')]= {name: m.get(interviewer,'name'), comments:this.refs.comments.value[m.get(interviewer,'key')]};
                                          }
                                          else{
-                                           commentsList[m.get(interviewer,'key')]= {name: m.get(interviewer,'name'), comments:['']};
+                                           commentsList[m.get(interviewer,'key')]= {name: m.get(interviewer,'name'), comments:[{content:'', score:0}]};
                                          }
 
                                          });

@@ -8,20 +8,25 @@ var Comment = React.createClass({
   },
 
   _handleBlur: function(e){
-    this.props.changeComment(this.props.index, e.target.value);
+    this.props.changeComment(this.props.index, 'content', e.target.value);
   },
+
   getInitialState: function() {
     return {value: this.props.dValue,
-            score: 1};
+            score: this.props.score};
   },
   _handleChange: function(e){
     this.setState({value: e.target.value});
   },
   _handleAddScore: function(e){
-    this.setState({score: this.state.score+1});
+    this.setState({score: this.state.score+1},
+                  function(){this.props.changeComment(this.props.index, 'score', this.state.score);}
+                 );
   },
   _handleReduceScore: function(e){
-    this.setState({score: this.state.score-1});
+    this.setState({score: this.state.score-1},
+                  function(){this.props.changeComment(this.props.index, 'score', this.state.score);}
+                 );
   },
   render: function() {
     return (

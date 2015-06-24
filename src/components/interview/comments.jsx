@@ -5,14 +5,13 @@ let React = require('react'),
 var Comments = React.createClass({
 
   _refreshData: function(){
-    var commentDatas = m.intoArray(
-                           m.remove((value)=>value=='',
-                                    m.map((comment)=>m.get(comment,'value'),
-                                           this.state.comments
-                                         )
+    var commentDatas = m.remove((value)=>m.get(value,'content')=='',
+                                 m.map((comment)=>m.get(comment,'value'),
+                                      this.state.comments
                                     )
-    );
-    this.props.cb(this.props.index, commentDatas);
+                               );
+
+    this.props.cb(this.props.index, m.toJs(commentDatas));
   },
 
   _deleteComment: function(index){
@@ -23,9 +22,9 @@ var Comments = React.createClass({
     },this._refreshData);
   },
 
-  _changeComment: function(index,value){
+  _changeComment: function(index,commentKey,value){
     var changedComment = m.nth(this.state.comments,index);
-    changedComment = m.assoc(changedComment, 'value', value);
+    changedComment = m.assocIn(changedComment, ['value',commentKey], value);
     this.setState({
       comments: m.assoc(this.state.comments, index, changedComment)
     },this._refreshData);
@@ -40,7 +39,7 @@ var Comments = React.createClass({
 
   _addComment: function(){
     var commentValues = m.intoArray(m.map((comment)=>m.get(comment, 'value'),this.state.comments));
-    commentValues.push('')
+    commentValues.push(m.hashMap('content','','score',0))
     this.setState({
       comments: this._arrayToMori(commentValues)
     },this._refreshData);
@@ -52,7 +51,7 @@ var Comments = React.createClass({
 
   render: function() {
     var comments = m.intoArray(this.state.comments).map((comment)=>{
-          return (<Comment key={m.get(comment,'key')} index={m.get(comment,'index')} dValue={m.get(comment,'value')} changeComment={this._changeComment} deleteComment={this._deleteComment}></Comment>);
+          return (<Comment key={m.get(comment,'key')} index={m.get(comment,'index')} dValue={m.get(m.get(comment,'value'),'content')} score={m.get(m.get(comment,'value'),'score')} changeComment={this._changeComment} deleteComment={this._deleteComment}></Comment>);
         });
     return (
       <div className='collapse comments'>

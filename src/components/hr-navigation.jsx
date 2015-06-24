@@ -3,6 +3,7 @@ var React = require('react');
 var Welcome = require('./navigation/welcome')
 var Search = require('./navigation/search')
 var Add = require('./navigation/add')
+var View = require('./navigation/view')
 
 var HRNavigation = React.createClass({
   _currentDate: function(){
@@ -17,6 +18,10 @@ var HRNavigation = React.createClass({
       <section className="top-bar-section">
         <ul className='left'>
           <Add></Add>
+        </ul>
+
+        <ul className='left'>
+          <View></View>
         </ul>
 
         <ul className='left'>

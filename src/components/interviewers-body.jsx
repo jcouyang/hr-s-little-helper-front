@@ -16,7 +16,7 @@ var InterviewersListBody = React.createClass({
 
   render: function(){
   	var interviewerItems = this.state.interviewers.map((interviewer)=>{
-  		return <InterviewerItem interviewer={interviewer} deleteCallback={this._getAllInterviews}></InterviewerItem>;
+  		return <InterviewerItem key={interviewer.key} interviewer={interviewer} deleteCallback={this._getAllInterviews}></InterviewerItem>;
   	});
   	return (
   		<tbody className='list-body'>

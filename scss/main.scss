@@ -13,11 +13,11 @@
 
 @font-face {
   font-family: 'icomoon';
-  src:url('fonts/icomoon.eot?tsycnl');
-  src:url('fonts/icomoon.eot?#iefixtsycnl') format('embedded-opentype'),
-  url('fonts/icomoon.ttf?tsycnl') format('truetype'),
-  url('fonts/icomoon.woff?tsycnl') format('woff'),
-  url('fonts/icomoon.svg?tsycnl#icomoon') format('svg');
+  src:url('fonts/icomoon.eot?7o2583');
+  src:url('fonts/icomoon.eot?#iefix7o2583') format('embedded-opentype'),
+  url('fonts/icomoon.ttf?7o2583') format('truetype'),
+  url('fonts/icomoon.woff?7o2583') format('woff'),
+  url('fonts/icomoon.svg?7o2583#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -48,6 +48,13 @@
 
 .icon-plus:after {
   content: "\ea0a";
+}
+
+.icon-thumbs-o-up:before {
+  content: "\e603";
+}
+.icon-thumbs-o-down:before {
+  content: "\e602";
 }
 
 .comments{

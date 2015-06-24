@@ -44,11 +44,16 @@ store.deleteInterviewer = function(id){
 
 store.newInterview = function(entity) {
   return authclient({method:'POST', path: 'interview', entity: entity});
-}
+};
 
 store.editInterview = function(id, entity) {
   return authclient({method:'PUT', path: 'interview/'+id, entity: entity});
-}
+};
+
+store.deleteInterview = function(id){
+  return authclient({method:'DELETE',path:'interview/'+id});
+};
+
 
 
 module.exports = store;

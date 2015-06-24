@@ -9,7 +9,7 @@ var authclient = function(opt) {
     if(resp.status.code===401) location.href='/login/'
     return resp
   })
-}
+};
 store.newInterviewer = function(entity) {
   return authclient({method:'POST', path: 'interviewer', entity: entity});
 };

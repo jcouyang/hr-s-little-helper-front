@@ -1,5 +1,5 @@
 var React = require('react');
-var Field = require('../Field');
+var Field = require('../field');
 
 var Comment = React.createClass({
 

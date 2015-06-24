@@ -20,6 +20,7 @@ var Interviewer = React.createClass({
   	return (
   	  <tr>
   	    <td>{this.props.interviewer.name}</td>
+  	    <td>{this.props.interviewer.avg_score}</td>
   	    <td>{this.props.interviewer.email}</td>
   	    <td>{this.props.interviewer.language}</td>
   	    <td>{this.props.interviewer.experience}</td>

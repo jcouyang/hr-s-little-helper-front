@@ -1,5 +1,10 @@
 var React = require('react');
 var Field = React.createClass({
+  getInitialState: function(){
+    this.value = this.props.dValue;
+    return null;
+  },
+
   handleInputChange: function(e){
     this.value = e.target.value
   },

@@ -38,13 +38,13 @@ var Comment = React.createClass({
           <span className={'label '+ (this.state.score >= 0 ? 'success': 'alert')}>{this.state.score}</span>
         </div>
         <div className="small-1 columns">
-          <span className="icon-delete-mid" onClick={this._handleDelete}></span>
+          <span className="icon-operation icon-delete-mid" onClick={this._handleDelete}></span>
         </div>
         <div className="small-1 columns">
-          <span className="icon-thumbs-o-up" onClick={this._handleAddScore}></span>
+          <span className="icon-operation icon-thumbs-o-up" onClick={this._handleAddScore}></span>
         </div>
         <div className="small-1 columns">
-          <span className="icon-thumbs-o-down" onClick={this._handleReduceScore}></span>
+          <span className="icon-operation icon-thumbs-o-down" onClick={this._handleReduceScore}></span>
         </div>
 
       </div>

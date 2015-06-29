@@ -55,7 +55,6 @@ var routes = {
   		appElement);
   },
   '/search/:keyword':function(keyword) {
-    console.log(keyword)
     React.render(<Interviews keyword={keyword}/>, appElement)
   }
 };

@@ -15,11 +15,14 @@ var Comments = React.createClass({
   },
 
   _deleteComment: function(index){
+    var restComments = m.filter((comment)=>m.get(comment,'index')!=index,
+                                                this.state.comments
+                                               )
+    var commentValues = m.intoArray(m.map((comment)=>m.get(comment, 'value'), restComments));
+
     this.setState({
-      comments: m.filter((comment)=>m.get(comment,'index')!=index,
-                         this.state.comments
-                        )
-    },this._refreshData);
+          comments: this._arrayToMori(commentValues)
+        },this._refreshData);
   },
 
   _changeComment: function(index,commentKey,value){

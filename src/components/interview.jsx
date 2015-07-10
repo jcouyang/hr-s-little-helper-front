@@ -27,6 +27,7 @@ var Interview = React.createClass({
 
     return this.props.data||{
         name:"",
+        experience:"",
         description: "",
         date: this._currentDate(),
         interviewers: [],
@@ -40,6 +41,7 @@ var Interview = React.createClass({
       'interviewers': this.refs.chooser.value,
       'date':this.refs.date.value,
       'name':this.refs.name.value,
+      'experience':this.refs.experience.value,
       'comments':this.refs.comments.value
     }
     var resp
@@ -76,9 +78,10 @@ var Interview = React.createClass({
   render: function() {
     return (
       <Form onSubmit={this._handleSubmit} method="post" title={this.props.data ? "Update Interview" : "Create Interview"} status={this.state.status}>
-        <Field lname='Description' ref="description" dValue={this.data().description}></Field>
         <Field lname='Interviewee Name' ref="name" dValue={this.data().name}></Field>
         <Field type="date" lname='Date' ref="date" dValue={this.data().date}></Field>
+        <Field lname='Experience' id='experience' ref='experience' dValue={this.data().experience}></Field>
+        <Field lname='Description' ref="description" dValue={this.data().description}></Field>
         <Chooser ref="chooser" dValue={this.data().interviewers} cb={this._cbChangeInterviewer}/>
         <CommentsList ref='comments' interviewers={this.state.selectedInterviewers}></CommentsList>
         <input type='submit' id='submit' className="button" value="Save"/>

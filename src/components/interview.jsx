@@ -17,9 +17,9 @@ var Interview = React.createClass({
   _currentDate: function(){
       var current = new Date();
       var m = current.getMonth()+1;
-      m = m>10 ? m : `0${m}`
+      m = m>9 ? m : `0${m}`
       var d = current.getDate();
-      d = d>10 ? d : `0${d}`
+      d = d>9 ? d : `0${d}`
       return `${current.getFullYear()}-${m}-${d}`;
     },
 

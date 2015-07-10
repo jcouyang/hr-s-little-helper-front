@@ -9,11 +9,17 @@ var Search = React.createClass({
     this._updateRoute(e.target.value);
   },
 
+  _handleKeyDown: function(e){
+    if (e.keyCode == 13){
+      this._updateRoute(e.target.value);
+    }
+  },
+
   render: function(){
     return (
       <div className="row collapse">
         <div className="large-13 columns">
-          <input type="search" placeholder="Search Interviewee" onChange={this._handleChange}></input>
+          <input type="search" placeholder="Search Interviewee" onKeyDown={this._handleKeyDown} onChange={this._handleChange}></input>
         </div>
       </div>
     );

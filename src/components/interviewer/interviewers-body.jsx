@@ -1,5 +1,5 @@
 var React = require('react');
-var store = require('../store');
+var store = require('../../store');
 
 var InterviewerItem = require('./interviewers-item');
 

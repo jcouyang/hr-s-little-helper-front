@@ -25,6 +25,11 @@ var routes = {
           React.render(
             <Interviewer title='Update new interviewer' id={interviewID}/>,
             appElement);
+    },
+    '/show/:interviewID':function(interviewID){
+          React.render(
+            <Interviewer title='Show interviewer' id={interviewID} readonly={true}/>,
+            appElement);
     }
   },
   '/interview': {

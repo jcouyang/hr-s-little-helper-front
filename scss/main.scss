@@ -8,7 +8,8 @@
 "foundation/components/type",
 "foundation/components/tables",
 "foundation/components/button-groups",
-"foundation/components/top-bar"
+"foundation/components/top-bar",
+"foundation/components/grid"
 ;
 
 @font-face {
@@ -73,4 +74,22 @@ input.edit-input:focus{
 
 .icon-operation:hover{
   cursor: pointer; cursor: hand;
+}
+
+.lbl{
+  color: #707070
+}
+.mod-header{
+  font-size: 1em;
+  border-bottom: 2px solid;
+  border-bottom-color: #007095;
+  margin-bottom: 3px;
+}
+
+.mod-part{
+  margin-top: 10px;
+}
+
+.center-title{
+  text-align: center;
 }

@@ -1,5 +1,5 @@
 var React = require('react');
-var store = require('../store');
+var store = require('../../store');
 
 var Interviewer = React.createClass({
 
@@ -19,7 +19,7 @@ var Interviewer = React.createClass({
   render: function(){
   	return (
   	  <tr>
-  	    <td>{this.props.interviewer.name}</td>
+  	    <td><a href={"#/interviewer/show/"+this.props.interviewer.key}>{this.props.interviewer.name}</a></td>
   	    <td>{this.props.interviewer.avg_score}</td>
   	    <td>{this.props.interviewer.email}</td>
   	    <td>{this.props.interviewer.language}</td>

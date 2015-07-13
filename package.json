@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "BABEL_JEST_STAGE=0 jest",
-    "mock": "drakov -f ./api/**/*.md",
+    "mock": "java -jar ./api/wiremock-1.56-standalone.jar --verbose --port 3000",
+    "record": "java -jar wiremock-1.56-standalone.jar --record-mappings --proxy-all=\"https://hrs-little-helper.herokuapp.com\" --verbose --port 3000",
     "start": "bower install && gulp"
   },
   "repository": {

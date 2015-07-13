@@ -1,6 +1,6 @@
 var React = require('react');
 
-var InterviewersListBody = require('./interviewers-body');
+var InterviewersListBody = require('./interviewer/interviewers-body');
 
 var InterviewersList = React.createClass({
 	render: function(){

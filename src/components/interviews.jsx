@@ -1,5 +1,6 @@
 var React = require('react'),
-    store = require('../store');
+    store = require('../store'),
+    InterviewList = require('./interview/interview-list');
 
 var Interviews = React.createClass({
   getInitialState: function() {
@@ -31,42 +32,21 @@ var Interviews = React.createClass({
     }
   },
 
-  _handleDelete: async function(e){
+  _handleDelete: async function(key){
     if (confirm('Do you confirm to delete this interview')){
-        var key = e.target.dataset.key;
         await store.deleteInterview(key);
     }
     this._refreshData()
   },
 
   render: function(){
-    let body = this.state.interviews.map(interview=>{
-      return (
-        <tr>
-          <td><a href={"#/interview/"+interview.key}>{interview.description}</a></td>
-          <td>{interview.name}</td>
-          <td><button data-key={interview.key} className='tiny' onClick={this._handleDelete}>Delete</button></td>
-        </tr>
-      )
-    })
-	    return (
-        <div className="row">
-          <div className="small-12 small-centered medium-8 medium-centered columns">
-            <h1>Interviews</h1>
-            <table summary="All interviews">
-	 		        <thead>
-			          <td width="500">Description</td>
-                      <td width="200">Name</td>
-                      <td width="200">Operations</td>
-		          </thead>
-	  	        <tbody>
-                {body}
-              </tbody>
-	          </table>
-          </div>
-        </div>
-	  );
-	}
+    return(
+      <div>
+        <h2 className='center-title'>Interviews</h2>
+        <InterviewList data={this.state.interviews} deleteHandler={this._handleDelete}></InterviewList>
+      </div>
+    );
+  }
 });
 
 module.exports = Interviews;

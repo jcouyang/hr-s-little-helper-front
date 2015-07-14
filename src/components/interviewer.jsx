@@ -2,7 +2,7 @@ var Field = require('./field');
 var React = require('react');
 var InterviewerForm = require('./interviewer-form')
 var store = require('../store');
-
+var InterviewerUpload = require('./interviewer-bulk-upload');
 var Interviewer = React.createClass({
   getInitialState: function() {
     return {
@@ -64,6 +64,8 @@ var Interviewer = React.createClass({
           <h2>{this.props.title}</h2>
           {message}
           {interviewerForm}
+          <h2>or upload a csv</h2>
+          <InterviewerUpload />
         </div>
       </div>
     );

@@ -1,0 +1,28 @@
+{
+  "request" : {
+    "url" : "/api/v1/interview",
+    "method" : "POST",
+    "bodyPatterns" : [ {
+      "equalToJson" : "{\"description\":\"a boring interview\",\"interviewers\":[\"0b3b3d3aef40906f\"],\"date\":\"2015-07-13\",\"name\":\"hehe da\",\"comments\":{\"0b3b3d3aef40906f\":[{\"content\":\"\",\"score\":0}]}}",
+      "jsonCompareMode" : "LENIENT"
+    } ]
+  },
+  "response" : {
+    "status" : 201,
+    "bodyFileName" : "body-v1-interview-iLsQ0.json",
+    "headers" : {
+      "Connection" : "keep-alive",
+      "Content-Type" : "application/json",
+      "Content-Length" : "20",
+      "Access-Control-Allow-Origin" : "http://localhost:8080",
+      "Access-Control-Allow-Methods" : "GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS",
+      "Access-Control-Expose-Headers" : "",
+      "Access-Control-Max-Age" : "1728000",
+      "Access-Control-Allow-Credentials" : "true",
+      "Vary" : "Origin",
+      "Server" : "WEBrick/1.3.1 (Ruby/2.0.0/2015-04-13)",
+      "Date" : "Mon, 13 Jul 2015 07:35:53 GMT",
+      "Via" : "1.1 vegur"
+    }
+  }
+}

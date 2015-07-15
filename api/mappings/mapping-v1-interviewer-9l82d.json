@@ -1,0 +1,28 @@
+{
+  "request" : {
+    "url" : "/api/v1/interviewer",
+    "method" : "POST",
+    "bodyPatterns" : [ {
+      "equalToJson" : "{\"name\":\"chen\",\"email\":\"sun@chen.com\",\"language\":\"ruby\",\"experience\":\"2\",\"\":\"\"}",
+      "jsonCompareMode" : "LENIENT"
+    } ]
+  },
+  "response" : {
+    "status" : 201,
+    "bodyFileName" : "body-v1-interviewer-9l82d.json",
+    "headers" : {
+      "Connection" : "keep-alive",
+      "Content-Type" : "application/json",
+      "Content-Length" : "73",
+      "Access-Control-Allow-Origin" : "http://localhost:8080",
+      "Access-Control-Allow-Methods" : "GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS",
+      "Access-Control-Expose-Headers" : "",
+      "Access-Control-Max-Age" : "1728000",
+      "Access-Control-Allow-Credentials" : "true",
+      "Vary" : "Origin",
+      "Server" : "WEBrick/1.3.1 (Ruby/2.0.0/2015-04-13)",
+      "Date" : "Mon, 13 Jul 2015 09:55:53 GMT",
+      "Via" : "1.1 vegur"
+    }
+  }
+}

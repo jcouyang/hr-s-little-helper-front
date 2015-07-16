@@ -19,7 +19,7 @@ var Interviewer = React.createClass({
   render: function(){
     var languages = this.props.interviewer.language.toString()
   	return (
-  	  <tr>
+  	  <tr key={this.props.interviewer.key}>
   	    <td><a href={"#/interviewer/show/"+this.props.interviewer.key}>{this.props.interviewer.name}</a></td>
   	    <td>{this.props.interviewer.avg_score}</td>
   	    <td>{this.props.interviewer.email}</td>

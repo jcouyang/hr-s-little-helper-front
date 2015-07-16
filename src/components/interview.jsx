@@ -4,7 +4,8 @@ var React = require('react'),
     Form = require('./form'),
     Field = require('./field'),
     Chooser = require('./chooser'),
-    CommentsList = require('./interview/comments-list');
+    CommentsList = require('./interview/comments-list'),
+    LanguageChooser = require('./language-chooser');
 
 var Interview = React.createClass({
   getInitialState: function() {
@@ -32,6 +33,7 @@ var Interview = React.createClass({
         date: this._currentDate(),
         interviewers: [],
         comments: {},
+        language: []
       }
   },
   _handleSubmit: async function(e){
@@ -42,7 +44,8 @@ var Interview = React.createClass({
       'date':this.refs.date.value,
       'name':this.refs.name.value,
       'experience':this.refs.experience.value,
-      'comments':this.refs.comments.value
+      'comments':this.refs.comments.value,
+      'language':this.refs.language.value
     }
     var resp
     if(this.props.data){
@@ -79,8 +82,9 @@ var Interview = React.createClass({
     return (
       <Form onSubmit={this._handleSubmit} method="post" title={this.props.data ? "Update Interview" : "Create Interview"} status={this.state.status}>
         <Field lname='Interviewee Name' ref="name" dValue={this.data().name}></Field>
-        <Field type="date" lname='Date' ref="date" dValue={this.data().date}></Field>
+        <LanguageChooser ref="language" name='Language' dValue={this.data().language} defaultText='-- Select Languages --' />
         <Field lname='Experience' id='experience' ref='experience' dValue={this.data().experience}></Field>
+        <Field type="date" lname='Date' ref="date" dValue={this.data().date}></Field>
         <Field lname='Description' ref="description" dValue={this.data().description}></Field>
         <Chooser ref="chooser" dValue={this.data().interviewers} cb={this._cbChangeInterviewer}/>
         <CommentsList ref='comments' interviewers={this.state.selectedInterviewers}></CommentsList>

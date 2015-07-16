@@ -1,9 +1,10 @@
-var Field = require('./field');
 var React = require('react');
-var InterviewerForm = require('./interviewer-form')
+var InterviewerForm = require('./interviewer/interviewer-form')
 var InterviewerShow = require('./interviewer/interviewer-show')
 var store = require('../store');
 var InterviewerUpload = require('./interviewer-bulk-upload');
+var Field = require('./field');
+
 var Interviewer = React.createClass({
   getInitialState: function() {
     return {

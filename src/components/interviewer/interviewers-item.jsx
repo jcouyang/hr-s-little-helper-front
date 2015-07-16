@@ -17,12 +17,13 @@ var Interviewer = React.createClass({
     }
   },
   render: function(){
+    var languages = this.props.interviewer.language.toString()
   	return (
   	  <tr>
   	    <td><a href={"#/interviewer/show/"+this.props.interviewer.key}>{this.props.interviewer.name}</a></td>
   	    <td>{this.props.interviewer.avg_score}</td>
   	    <td>{this.props.interviewer.email}</td>
-  	    <td>{this.props.interviewer.language}</td>
+  	    <td>{languages}</td>
   	    <td>{this.props.interviewer.experience}</td>
   	    <td>
   	      <ul className="button-group even-2">

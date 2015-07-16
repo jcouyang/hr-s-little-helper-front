@@ -19,8 +19,9 @@ var InterviewList = React.createClass({
           options = <td><button data-key={interview.id} className='tiny' onClick={this._handleDelete}>Delete</button></td>
       }
       return (
-        <tr>
+        <tr key={interview.id}>
           <td><a href={"#/interview/"+interview.id}>{interview.name}</a></td>
+          <td>{interview.language ? interview.language.toString() : ''}</td>
           <td>{interview.date}</td>
           <td>{interview.description}</td>
           {options}
@@ -33,6 +34,7 @@ var InterviewList = React.createClass({
             <table summary="All interviews">
 	 		        <thead>
                       <td width="200">Name</td>
+                      <td width="200">Language</td>
                       <td width="200">Date</td>
 			          <td width="500">Description</td>
 			          {optionsTitle}

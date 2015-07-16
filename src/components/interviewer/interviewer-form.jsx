@@ -1,5 +1,7 @@
-var Field = require('./field');
+var Field = require('../field');
 var React = require('react');
+var LanguageChooser = require('../language-chooser');
+
 
 var InterviewerForm = React.createClass({
 
@@ -11,8 +13,8 @@ var InterviewerForm = React.createClass({
              'key':this.getDefaultValue("key")});
   },
 
-  getDefaultValue:  function(name){
-    return this.props.data ? this.props.data[name] : '';
+  getDefaultValue:  function(name, dValue=''){
+    return this.props.data ? this.props.data[name] : dValue;
   },
 
   render: function(){
@@ -20,7 +22,7 @@ var InterviewerForm = React.createClass({
       <form onSubmit={this.props.handleSubmit} method="post">
         <Field lname='Name' id='name' ref='name' dValue={this.getDefaultValue('name')}></Field>
         <Field lname='Email' id='email' ref='email' dValue={this.getDefaultValue('email')}></Field>
-        <Field lname='Language' id='language' ref='language' dValue={this.getDefaultValue('language')}></Field>
+        <LanguageChooser ref="language" name='Language' dValue={this.getDefaultValue('language',[])} defaultText='-- Select Languages --' />
         <Field lname='Experience' id='experience' ref='experience' dValue={this.getDefaultValue('experience')}></Field>
           <ul className="button-group even-2">
             <li><input type='submit' id='submit' className="button radius" value="Save"/></li>

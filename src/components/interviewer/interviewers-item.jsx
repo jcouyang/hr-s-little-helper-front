@@ -21,7 +21,7 @@ var Interviewer = React.createClass({
   	return (
   	  <tr key={this.props.interviewer.key}>
   	    <td><a href={"#/interviewer/show/"+this.props.interviewer.key}>{this.props.interviewer.name}</a></td>
-  	    <td>{this.props.interviewer.avg_score}</td>
+  	    <td>{(this.props.interviewer.avg_score*100).toFixed(2)}%</td>
   	    <td>{this.props.interviewer.email}</td>
   	    <td>{languages}</td>
   	    <td>{this.props.interviewer.experience}</td>
